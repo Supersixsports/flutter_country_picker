@@ -1,6 +1,7 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() => runApp(MyApp());
 
@@ -77,8 +78,8 @@ class HomePage extends StatelessWidget {
               countryListTheme: CountryListThemeData(
                 // Optional. Sets the border radius for the bottomsheet.
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40.0),
-                  topRight: Radius.circular(40.0),
+                  topLeft: Radius.circular(40.sp),
+                  topRight: Radius.circular(40.sp),
                 ),
                 // Optional. Styles the search field.
                 inputDecoration: InputDecoration(
@@ -94,7 +95,7 @@ class HomePage extends StatelessWidget {
                 // Optional. Styles the text in the search field
                 searchTextStyle: TextStyle(
                   color: Colors.blue,
-                  fontSize: 18,
+                  fontSize: 14.sp,
                 ),
               ),
             );
