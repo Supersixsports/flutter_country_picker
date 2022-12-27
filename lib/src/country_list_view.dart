@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'country.dart';
 import 'country_list_theme_data.dart';
@@ -122,10 +123,10 @@ class _CountryListViewState extends State<CountryListView> {
 
     return Column(
       children: <Widget>[
-        const SizedBox(height: 12),
+        SizedBox(height: 12.sp),
         if (widget.showSearch)
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 14.sp, vertical: 10.sp),
             child: TextField(
               autofocus: _searchAutofocus,
               controller: _searchController,
@@ -152,10 +153,7 @@ class _CountryListViewState extends State<CountryListView> {
                 ..._favoriteList!
                     .map<Widget>((currency) => _listRow(currency))
                     .toList(),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Divider(thickness: 1),
-                ),
+                Divider(thickness: 1.sp),
               ],
               ..._filteredList
                   .map<Widget>((country) => _listRow(country))
@@ -186,27 +184,12 @@ class _CountryListViewState extends State<CountryListView> {
           Navigator.pop(context);
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 5.0),
+          padding: EdgeInsets.symmetric(vertical: 5.sp),
           child: Row(
             children: <Widget>[
-              Row(
-                children: [
-                  const SizedBox(width: 20),
-                  _flagWidget(country),
-                  if (widget.showPhoneCode && !country.iswWorldWide) ...[
-                    const SizedBox(width: 15),
-                    SizedBox(
-                      width: 45,
-                      child: Text(
-                        '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
-                        style: _textStyle,
-                      ),
-                    ),
-                    const SizedBox(width: 5),
-                  ] else
-                    const SizedBox(width: 15),
-                ],
-              ),
+              SizedBox(width: 20.sp),
+              _flagWidget(country),
+              SizedBox(width: 10.sp),
               Expanded(
                 child: Text(
                   CountryLocalizations.of(context)
@@ -215,7 +198,19 @@ class _CountryListViewState extends State<CountryListView> {
                       country.name,
                   style: _textStyle,
                 ),
-              )
+              ),
+              if (widget.showPhoneCode && !country.iswWorldWide) ...[
+                SizedBox(width: 15.sp),
+                SizedBox(
+                  width: 45.sp,
+                  child: Text(
+                    '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
+                    style: _textStyle,
+                  ),
+                ),
+                SizedBox(width: 5.sp),
+              ] else
+                SizedBox(width: 15.sp),
             ],
           ),
         ),
@@ -227,13 +222,13 @@ class _CountryListViewState extends State<CountryListView> {
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
     return SizedBox(
       // the conditional 50 prevents irregularities caused by the flags in RTL mode
-      width: isRtl ? 50 : null,
+      width: isRtl ? 50.sp : null,
       child: Text(
         country.iswWorldWide
             ? '\uD83C\uDF0D'
             : Utils.countryCodeToEmoji(country.countryCode),
         style: TextStyle(
-          fontSize: widget.countryListTheme?.flagSize ?? 25,
+          fontSize: widget.countryListTheme?.flagSize ?? 25.sp,
         ),
       ),
     );
@@ -255,5 +250,5 @@ class _CountryListViewState extends State<CountryListView> {
     setState(() => _filteredList = _searchResult);
   }
 
-  TextStyle get _defaultTextStyle => const TextStyle(fontSize: 16);
+  TextStyle get _defaultTextStyle => TextStyle(fontSize: 16.sp);
 }
