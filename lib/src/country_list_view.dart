@@ -189,7 +189,7 @@ class _CountryListViewState extends State<CountryListView> {
             children: <Widget>[
               SizedBox(width: 20.sp),
               _flagWidget(country),
-              SizedBox(width: 10.sp),
+              SizedBox(width: 16.sp),
               Expanded(
                 child: Text(
                   CountryLocalizations.of(context)
@@ -200,15 +200,11 @@ class _CountryListViewState extends State<CountryListView> {
                 ),
               ),
               if (widget.showPhoneCode && !country.iswWorldWide) ...[
-                SizedBox(width: 15.sp),
-                SizedBox(
-                  width: 45.sp,
-                  child: Text(
-                    '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
-                    style: _textStyle,
-                  ),
+                Text(
+                  '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
+                  style: _textStyle,
                 ),
-                SizedBox(width: 5.sp),
+                SizedBox(width: 20.sp),
               ] else
                 SizedBox(width: 15.sp),
             ],
