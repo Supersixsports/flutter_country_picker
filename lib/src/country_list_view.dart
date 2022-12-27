@@ -202,6 +202,7 @@ class _CountryListViewState extends State<CountryListView> {
               if (widget.showPhoneCode && !country.iswWorldWide) ...[
                 Text(
                   '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
+                  textAlign: TextAlign.right,
                   style: _textStyle,
                 ),
                 SizedBox(width: 20.sp),
