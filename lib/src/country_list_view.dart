@@ -205,7 +205,11 @@ class _CountryListViewState extends State<CountryListView> {
                   child: Text(
                     '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
                     textAlign: TextAlign.right,
-                    style: _textStyle,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.sp,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w500),
                   ),
                 ),
                 SizedBox(width: 20.sp),
